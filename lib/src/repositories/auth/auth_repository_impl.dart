@@ -26,12 +26,13 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       return AuthModel.fromMap(result.data);
+      // return AuthModel.fromMap(result.data);
     } on DioException catch (e, s) {
       if (e.response?.statusCode == 403) {
         log('Login ou senha inválidos', error: e, stackTrace: s);
         throw UnauthorizedException();
       }
-      
+
       log('Erro ao realizar login', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao realizar login');
     }
