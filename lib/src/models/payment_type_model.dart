@@ -6,13 +6,13 @@ class PaymentTypeModel {
   final int? id;
   final String name;
   final String acronym;
-  final bool enable;
+  final bool enabled;
   
   PaymentTypeModel({
     this.id,
     required this.name,
     required this.acronym,
-    required this.enable,
+    required this.enabled,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,16 +20,16 @@ class PaymentTypeModel {
       'id': id,
       'name': name,
       'acronym': acronym,
-      'enable': enable,
+      'enabled': enabled,
     };
   }
 
   factory PaymentTypeModel.fromMap(Map<String, dynamic> map) {
     return PaymentTypeModel(
       id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] as String,
-      acronym: map['acronym'] as String,
-      enable: map['enable'] as bool,
+      name: (map['name'] ?? '') as String,
+      acronym: (map['acronym'] ?? '') as String,
+      enabled: (map['enabled'] ?? false) as bool,
     );
   }
 
