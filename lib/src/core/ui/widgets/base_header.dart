@@ -6,7 +6,7 @@ class BaseHeader extends StatelessWidget {
   final String title;
   final ValueChanged<String>? searchChange;
   final String buttonLabel;
-  final VoidCallback buttonPressed;
+  final VoidCallback? buttonPressed;
   final bool addButton;
   final Widget? filterWidget;
 
@@ -14,8 +14,8 @@ class BaseHeader extends StatelessWidget {
     super.key,
     required this.title,
     this.searchChange,
-    required this.buttonLabel,
-    required this.buttonPressed,
+    this.buttonLabel = '',
+    this.buttonPressed,
     this.addButton = true,
     this.filterWidget,
   });

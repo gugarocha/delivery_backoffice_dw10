@@ -20,7 +20,7 @@ class ProductRepositoryImpl implements ProductRepository {
       await _dio.auth().put(
         '/products/$id',
         data: {
-          'enabled:': false,
+          'enabled': false,
         },
       );
     } on DioException catch (e, s) {

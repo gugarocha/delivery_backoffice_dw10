@@ -12,7 +12,7 @@ enum Menu {
     'Administrar Produtos',
   ),
   orders(
-    '/orders/',
+    '/order/',
     'order_ico.png',
     'order_ico_selected.png',
     'Pedidos do dia',
