@@ -19,7 +19,7 @@ class OrderRepositoryImpl implements OrderRepository {
       await _dio.auth().put(
         '/orders/$id',
         data: {
-          'status': status,
+          'status': status.acronym,
         },
       );
     } on DioException catch (e, s) {
@@ -44,7 +44,7 @@ class OrderRepositoryImpl implements OrderRepository {
         '/orders',
         queryParameters: {
           'date': date.toIso8601String(),
-          if (status != null) 'status': status,
+          if (status != null) 'status': status.acronym,
         },
       );
 
