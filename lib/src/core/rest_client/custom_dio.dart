@@ -16,20 +16,13 @@ class CustomDio extends DioForBrowser {
             receiveTimeout: const Duration(seconds: 60),
           ),
         ) {
-    interceptors.add(
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        requestHeader: true,
-        responseHeader: true,
-      ),
-    );
-
     _authInterceptor = AuthInterceptor(storage);
   }
 
   CustomDio auth() {
-    interceptors.add(_authInterceptor);
+    if (!interceptors.contains(_authInterceptor)) {
+      interceptors.add(_authInterceptor);
+    }
     return this;
   }
 

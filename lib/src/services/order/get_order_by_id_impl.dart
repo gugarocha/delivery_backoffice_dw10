@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import '../../dto/order/order_dto.dart';
 import '../../dto/order/order_product_dto.dart';
 import '../../models/orders/order_model.dart';
@@ -25,8 +23,6 @@ class GetOrderByIdImpl implements GetOrderById {
   Future<OrderDto> call(OrderModel order) => _orderDtoParse(order);
 
   Future<OrderDto> _orderDtoParse(OrderModel order) async {
-    final start = DateTime.now();
-
     final paymentTypeFuture = _paymentTypeRepository.getById(
       order.paymentTypeId,
     );
@@ -38,10 +34,6 @@ class GetOrderByIdImpl implements GetOrderById {
       userFuture,
       orderProductsFuture,
     ]);
-
-    print(
-      'Calculando Tempo: ${DateTime.now().difference(start).inMilliseconds}',
-    );
 
     return OrderDto(
       id: order.id,
